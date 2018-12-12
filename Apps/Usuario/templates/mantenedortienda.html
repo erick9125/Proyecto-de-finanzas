@@ -1,0 +1,122 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Mantenedor</title>
+
+    <!--Estilos-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" >
+    <link  rel="stylesheet" href="{% static 'css/modern-business.css' %}">
+	<link rel="stylesheet" media="screen" href="{% static 'css/style.css' %}"> 
+</head>
+<body>
+<!--Navegador-->
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="{% url 'Usuario:menu' %}">Mis Finanzas</a>
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+               <li class="nav-item">
+                <a class="nav-link" href="{% url 'Usuario:salir' %}">Cerrar Sesion</a>
+              </li>
+            </ul>
+          </div>
+</div>
+</nav>
+ <!--Tablas-->         
+<div class="container"> 
+    <br><br>
+    <div class="row">        
+        <div class="col-md-4 col-sm-4 col-xs-4">
+                <div class="panel panel-default">
+                     <div class="panel-heading">Formulario de Tiendas</div>
+                     <div class="panel-body">
+                         <br>
+                    <form method="POST" action="{% url 'Usuario:guardar_tienda' %}" enctype="multipart/form-data" accept-charset="UTF-8" class="test-form">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input required="required" class="form-control" placeholder="Nombre Tienda" name="nombretienda" type="text" value="">
+                        </div>
+                        <div class="form-group">  
+                            <input required="required" class="form-control" value="" placeholder="Nombre Sucursal" name="nombresucursal" type="text">     
+                        </div>
+                        <div class="form-group">  
+                                <p style="text-align: center"> ¿Es online? <input class="form-control" name="esOnline" type="checkbox"></p> 
+                            </div>            
+                        <div class="form-group">
+                                <input class="form-control" value="" placeholder="Dirección" name="direccion" type="text">                            
+                        </div>                
+                        <div class="form-group">
+                                <input class="form-control" value="" placeholder="Ciudad" name="ciudad" type="text">                    
+                        </div>                      
+                        <div class="form-group">
+                                <input class="form-control" value="" placeholder="Region" name="region" type="text">                            
+                        </div>           
+                        <div class="form-group">
+                            <input class="btn btn-primary" type="submit" value="Guardar">
+                        </div>
+                    </form>
+                     </div>
+                 </div>
+             </div>            
+
+    <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">Tiendas</div>
+                <br>
+                <div class="panel-body">
+                    <table class="table table-striped table-dark table-bordered datatable" cellspacing="0" width="100%">
+                        <tbody> 
+                                <tr>
+                                        <td>N°</td>
+                                        <td>Nombre Tienda</td>
+                                        <td>Nombre Sucursal</td>
+                                        <td>Tienda</td>
+                                        <td>Direccion</td>
+                                        <td>Ciudad</td>
+                                        <td>Region</td>
+                                    </tr>
+                                    {% if request.user.is_superuser %}
+                                {% for question in tiendas %}
+                                    <tr>
+                                        <td>{{ question.id }}</td>
+                                        <td>{{ question.nombretienda }}</td>
+                                        <td>{{ question.nombresucursal }}</td>
+                                        <td>{{ question.esOnline }}</td>
+                                        <td>{{ question.direccion }}</td>
+                                        <td>{{ question.ciudad }}</td>
+                                        <td>{{ question.region }}</td>                                    
+                                                <td><a href="{% url 'Usuario:verificartienda' question.id %}">Verificar</a></td>
+                                                <td><a onclick="return confirm('Esta seguro que quiere eliminar ?');" href="{% url 'Usuario:eliminartienda' question.id %}">Eliminar</a></td>
+                                        {% endfor %}  
+                                            {% else %}
+                                        {% for question in tiendasf %}
+                                            <tr>
+                                                <td>{{ question.id }}</td>
+                                                <td>{{ question.nombretienda }}</td>
+                                                <td>{{ question.nombresucursal }}</td>
+                                                <td>{{ question.esOnline|yesno:" Online,Fisica" }}</td>
+                                                <td>{{ question.direccion }}</td>
+                                                <td>{{ question.ciudad }}</td>
+                                                <td>{{ question.region }}</td>
+                                                {% endfor %} 
+                                            {% endif %}
+                                    </tr>       
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

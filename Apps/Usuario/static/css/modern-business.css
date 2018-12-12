@@ -1,0 +1,120 @@
+/*!
+ * Start Bootstrap - Modern Business (https://startbootstrap.com/template-overviews/modern-business)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-logomodern-business-nav/blob/master/LICENSE)
+ */
+
+.carousel-caption{
+    background-color: rgba(0, 0, 0, 0.28);
+    border-radius: 60px;
+    margin-right: auto;
+    margin-bottom: 40px;
+}
+.carousel-caption p{
+    color: rgb(255, 255, 255) !important;
+    font-size: 16px;
+    font-weight: 600;
+    font-style: italic; 
+}
+
+body {
+  padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
+
+.carousel-item {
+  height: 65vh;
+  min-height: 300px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.portfolio-item {
+  margin-bottom: 30px;
+}
+
+
+.features {
+    border: 1px solid #e0e0e0;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-width: 1px 0;
+    background: #fff;
+    padding: 2.667em 0 0;
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 980px;
+}
+
+.wrapper {
+  position: relative;
+}
+
+
+
+
+
+
+.features .mod {
+  clear: both;
+  line-height: 140%;
+  margin: 0 auto 4.667em;
+  width: 83.67347%;
+}
+
+.features .mod strong {
+  color: #da4a39;
+  font-weight: normal;
+}
+
+.features .img {
+  float: left;
+  width: 36.585365854%;
+}
+
+.features .img img {
+  height: auto;
+  max-width: 100%;
+}
+
+.features .text {
+  float: right;
+  text-align: left;
+  width: 58.536585366%;
+}
+
+.features .alt .img {
+  float: right;
+}
+
+.features .alt .text {
+  float: left;
+  text-align: right;
+}
+
+.features .title {
+  color: #4d4d4d;
+  font-size: 1.667em;
+  margin-top: 0;
+  line-height: 120%;
+}
+
+.features .title span {
+  display: block;
+}
+
+.features .link {
+  margin-top: 1.667em;
+}

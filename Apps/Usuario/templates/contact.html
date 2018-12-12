@@ -1,0 +1,123 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Mis Finanzas</title>
+
+    <!-- Bootstrap core CSS -->
+    <!--Estilos-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" >
+    <link  rel="stylesheet" href="{% static 'css/modern-business.css' %}">
+	<link rel="stylesheet" media="screen" href="{% static 'css/style.css' %}"> 
+
+  </head>
+
+  <body>
+
+     <!-- Barra de Navegación -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'Usuario:home' %}">Mis Finanzas</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contactanos</a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="{% url 'Usuario:registroUsuario' %}">Registrate</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'Usuario:login' %}">Iniciar Sesión</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+      <!-- Page Heading/Breadcrumbs -->
+      <h1 class="mt-4 mb-3">Contactanos
+        <small></small>
+      </h1>
+
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{% url 'Usuario:home' %}">Pagina Principal</a>
+        </li>
+        <li class="breadcrumb-item active">Contactanos</li>
+      </ol>
+
+      <!-- Contenido de la pagina-->
+      <div class="row">
+        <!-- Mapa de Google Maps -->
+        <div class="col-lg-8 mb-4">
+          <!-- Embedded Google Map -->
+          <iframe width="100%" height="400px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src=https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.0754609356845!2d-70.65983528437569!3d-33.44734048077496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c507f91be917%3A0xcfac72a68dd4b986!2sDuoc+UC!5e0!3m2!1ses!2scl!4v1542589902888"></iframe>
+        </div>
+
+
+        
+
+
+        <!-- Contact Details Column -->
+        <div class="col-lg-4 mb-4">
+          <h3>Contacto</h3>
+          <p>
+            Padre Alonso de Ovalle #1586, Santiago 
+            <br>Region Metropolitana, Chile
+            <br>
+          </p>
+          <p>
+            <abbr title="Telefono">Telefono</abbr>: (+562) 25218798
+          </p>
+          <p>
+            <abbr title="Email">Email</abbr>:
+            <a href="mailto:name@example.com">misfinanzas@gmail.com
+            </a>
+          </p>
+          <p>
+            <abbr title="Horario de atención">Horario</abbr>: Lunes - Viernes: 9:00 AM a 5:00 PM
+          </p>
+        </div>
+      </div>
+      <!-- /.row -->
+
+
+
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Desarrollo web y mobile</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Contact form JavaScript -->
+    <!-- Do not edit these files! In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+  </body>
+
+</html>

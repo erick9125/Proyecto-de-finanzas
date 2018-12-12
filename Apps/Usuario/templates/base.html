@@ -1,0 +1,97 @@
+{% load pwa %}
+{% load static from staticfiles %}
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+  {% progressive_web_app_meta %}
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Tienda Finanza {% block titulo %} {% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  {% block css%} 
+  {% endblock %}
+</head>
+<body>
+  {% block barra %}
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'Usuario:home' %}">Mis Finanzas</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'Usuario:contactanos' %}">Contactanos</a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="{% url 'Usuario:registroUsuario' %}">Registrate</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'Usuario:login' %}">Iniciar Sesión</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  {% endblock %}
+
+  {% block header%}
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <!-- Slide One - Set the background image for this slide in the line below -->
+        <div class="carousel-item active" style="background-image: url('/static/img/iconos menu/carrousel1_finanzas-800x400.jpg')">
+          <div class="carousel-caption d-none d-md-block">
+            <h3>Controla tu dinero fácilmente</h3>
+            <p>Ya es hora de tomar las riendas de tus finanzas. Mis Finanzas te permite, de un modo sencillo y automático, entender tus gastos. Ahora puedes ahorrar inteligentemente.</p>
+          </div>
+        </div>
+        <!-- Slide Two - Set the background image for this slide in the line below -->
+        <div class="carousel-item" style="background-image: url('/static/img/iconos menu/carrousel2_como-hacer-un-presupuesto-personal.jpg')">
+          <div class="carousel-caption d-none d-md-block">
+            <h3>Todas tus finanzas en un solo lugar</h3>
+            <p>En Mis Finanzas podrás ver, de forma segura, todas tus cuentas en un mismo sitio. Puedes crear un presupuesto, ordenar tus gastos y mucho más. Y además es gratis.</p>
+          </div>
+        </div>
+        <!-- Slide Three - Set the background image for this slide in the line below -->
+        <div class="carousel-item" style="background-image: url('/static/img/iconos menu/carrousel3_MyValueLanding4.jpg')">
+          <div class="carousel-caption d-none d-md-block">
+            <h3>Gestiona tu efectivo</h3>
+            <p>Ahora podrás gestionar también tu efectivo con tus gastos. Nunca fue tan sencillo llevar al días tus pequeños gastos.</p>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  {% endblock %}
+
+  {% block contenido %}
+  {% endblock %}
+
+  {% block footer%}
+  <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Duoc UC 2018</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+  {% endblock %}
+</body>
+{% block js %}
+{% endblock %}
+
+</html>
+

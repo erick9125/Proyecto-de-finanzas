@@ -1,0 +1,140 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Listas</title>
+
+    <!--Estilos-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" >
+    <link  rel="stylesheet" href="{% static 'css/modern-business.css' %}">
+	<link rel="stylesheet" media="screen" href="{% static 'css/style.css' %}"> 
+</head>
+<body>
+    <!--Navegador-->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container">
+              <a class="navbar-brand" href="{% url 'Usuario:menu' %}">Mis Finanzas</a>
+              <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                   <li class="nav-item">
+                    <a class="nav-link" href="{% url 'Usuario:salir' %}">Cerrar Sesion</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+    <!--Tablas-->
+    <br><br>
+    <div class="container row" style="transform: translateX(91px)">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">Listas</div>
+            <div class="panel-body">
+                <table class="table table-striped table-dark table-bordered datatable" cellspacing="0" width="100%">
+                    <tbody>
+                            <tr>
+                                    <td>Nº Lista</td>  
+                                    <td>Nombre Lista</td> 
+                                    <td></td> 
+                            </tr>
+                                {% for list in Lista %}
+                                    <tr> 
+                                    <td>{{ list.pk }}</td>  
+                                    <td>{{ list.nombrelista }}</td>                                      
+                                    <td><a href="{% url 'Usuario:productoconid' list.pk %}">Ver Lista</a></td>
+                                    </tr> 
+                                {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-2" >
+        <div class="panel panel-default" style="transform: translateX(-30px)">
+            <div class="panel-heading"></div>
+            <div class="panel-body">
+                <table class="table table-striped table-dark table-bordered datatable" cellspacing="0">
+                    <tbody>
+                            <tr>
+                                    <td>Total de Productos</td> 
+                            </tr>
+                                {% for value in listproduct %}                                        
+                                <tr><td>{{ value|length }}</td>    
+                                {% endfor %}
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-2">
+            <div class="panel panel-default" style="transform: translateX(-62px)">
+                <div class="panel-heading" style="opacity:50"></div>
+                <div class="panel-body">
+                    <table class="table table-striped table-dark table-bordered datatable" cellspacing="0">
+                        <tbody>
+                                <tr>
+                                        <td>Total Presupuestado</td> 
+                                </tr>
+                               
+                                    {% for a in sumaP %}                                        
+                                    <tr><td>{{ a }}</td></tr>
+                                    {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-1">
+                <div class="panel panel-default" style="transform: translateX(-93px)">
+                    <div class="panel-heading"></div>
+                    <div class="panel-body">
+                        <table class="table table-striped table-dark table-bordered datatable" cellspacing="0">
+                            <tbody>
+                                    <tr>
+                                            <td>Total Real</td> 
+                                    </tr>                                        
+                                        {% for b in sumaR %}                                        
+                                        <tr><td>{{ b }}</td></tr>    
+                                        {% endfor %}                        
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                    <div class="panel panel-default" style="transform: translateX(-117px)">
+                        <div class="panel-heading"></div>
+                        <div class="panel-body">
+                            <table class="table table-striped table-dark table-bordered datatable" >
+                                <tbody>
+                                        <tr>
+                                                <td>Nº de Productos comprados</td> 
+                                        </tr>                                        
+                                            
+                                            {% for c in counter %}                                        
+                                            <tr><td>{{ c }}</td></tr>      
+                                            {% endfor %}
+                                            <td> <a href="{% url 'Usuario:guardar_lista'  %}"> <button type="button" class="btn btn-info">Crear Lista +</button> </a></td> 
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+</div>
+
+</body>
+</html>
